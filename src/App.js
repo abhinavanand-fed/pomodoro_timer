@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const PomodoroTimer = () => {
   const [timeLeft, setTimeLeft] = useState(1500);
@@ -14,7 +14,7 @@ const PomodoroTimer = () => {
     setIsRunning(true);
     setIntervalId(
       setInterval(() => {
-        setTimeLeft(prevTimeLeft => {
+        setTimeLeft((prevTimeLeft) => {
           if (prevTimeLeft > 0) {
             return prevTimeLeft - 1;
           } else {
@@ -40,15 +40,15 @@ const PomodoroTimer = () => {
     setSeconds(0);
   };
 
-  const handleHoursChange = event => {
+  const handleHoursChange = (event) => {
     setHours(event.target.value);
   };
 
-  const handleMinutesChange = event => {
+  const handleMinutesChange = (event) => {
     setMinutes(event.target.value);
   };
 
-  const handleSecondsChange = event => {
+  const handleSecondsChange = (event) => {
     setSeconds(event.target.value);
   };
 
@@ -57,7 +57,8 @@ const PomodoroTimer = () => {
   return (
     <div className="container-fluid p-5 bg-light">
       <h1 className="text-center">
-        {displayMinutes}:{displaySeconds < 10 ? `0${displaySeconds}` : displaySeconds}
+        {displayMinutes}:
+        {displaySeconds < 10 ? `0${displaySeconds}` : displaySeconds}
       </h1>
       <div className="form-group d-flex justify-content-center">
         <input
@@ -89,8 +90,12 @@ const PomodoroTimer = () => {
           className="btn btn-primary m-2"
         >
           Start
-          </button>
-        <button onClick={stopTimer} disabled={!isRunning} className="btn btn-danger m-2">
+        </button>
+        <button
+          onClick={stopTimer}
+          disabled={!isRunning}
+          className="btn btn-danger m-2"
+        >
           Stop
         </button>
         <button onClick={resetTimer} className="btn btn-secondary m-2">
